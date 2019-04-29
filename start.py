@@ -4,7 +4,7 @@ from reddit_scrape import *
 
 from twitter_scrape import *
 
-fields = ('Consumer Key:','Consumer secret:','Access token:','Latitude:','Longitude:','Radius:')
+fields = ('Hashtag:','Latitude:','Longitude:','Radius:')
 
 
 def makeform(root, fields):
