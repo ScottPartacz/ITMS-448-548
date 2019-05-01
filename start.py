@@ -4,21 +4,6 @@ from reddit_scrape import *
 
 from twitter_scrape import *
 
-fields = ('Hashtag:','Latitude:','Longitude:','Radius:')
-
-
-def makeform(root, fields):
-   entries = []
-   for field in fields:
-      row = Frame(root)
-      lab = Label(row, width=15, text=field, anchor='w')
-      ent = Entry(row)
-      row.pack(side=TOP, fill=X, padx=5, pady=5)
-      lab.pack(side=LEFT)
-      ent.pack(side=RIGHT, expand=YES, fill=X)
-      entries.append((field, ent))
-   return entries
-
 def Reddit_GUI():
 
     for widget in toolbar2.winfo_children():
@@ -43,11 +28,15 @@ def Twitter_GUI():
     for widget in toolbar2.winfo_children():
         widget.destroy()
 
-    ents = makeform(toolbar2, fields)
+    l2 = Label(toolbar2, text = "Hashtag: ")
 
-    toolbar2.bind('<Return>', (lambda event, e=ents: fetch(e)))
+    l2.pack()
 
-    btn1 = Button(toolbar2, text = "Submit", width = 16, command = Twitter_Scrape)
+    e2 = Entry(toolbar2)
+
+    e2.pack(side=TOP, fill=X, padx=5, pady=5)
+
+    btn1 = Button(toolbar2, text = "Submit", width = 16, command = lambda: Twitter_Scrape(e2.get()))
 
     btn1.pack(side = TOP, padx = 10, pady = 10)
     
